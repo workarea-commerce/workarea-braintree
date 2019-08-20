@@ -1,0 +1,72 @@
+module Workarea
+  decorate Payment::Authorize::CreditCard, with: :braintree do
+    decorated { delegate :address, to: :tender }
+
+    def complete!
+      transaction.response = handle_active_merchant_errors do
+        if tender.token.present?
+          gateway.authorize(
+            transaction.amount.cents,
+            tender.token,
+            {
+              payment_method_token: true,
+              order_id: order_id,
+              email: email,
+              billing_address: billing_address
+            }
+          )
+        else
+          gateway.authorize(
+            transaction.amount.cents,
+            tender.to_active_merchant,
+            {
+              store: true,
+              order_id: order_id,
+              email: email,
+              billing_address: billing_address
+            }
+          )
+        end
+      end
+
+      if transaction.response.success? && tender.token.blank?
+        tender.token = transaction.response.params["braintree_transaction"]["credit_card_details"]["token"]
+        tender.save!
+      end
+    end
+
+    def cancel!
+      return unless transaction.success?
+
+      transaction.cancellation = handle_active_merchant_errors do
+        gateway.void(transaction.response.authorization)
+      end
+    end
+
+    private
+
+    def email
+      return unless tender.profile.present?
+
+      tender.profile.email
+    end
+
+    def order_id
+      tender.payment.id
+    end
+
+    def billing_address
+      {
+        name:       nil,
+        company:    nil,
+        address1:   address.street,
+        address2:   address.street_2,
+        city:       address.city,
+        state:      address.region,
+        country:    address.country.try(:alpha2),
+        zip:        address.postal_code,
+        phone:      nil
+      }
+    end
+  end
+end

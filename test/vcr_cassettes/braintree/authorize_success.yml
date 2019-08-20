@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/b/transactions
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <transaction>
+          <amount>5.00</amount>
+          <order-id nil="true"/>
+          <customer>
+            <id nil="true"/>
+            <email nil="true"/>
+            <phone nil="true"/>
+            <first-name>Ben</first-name>
+            <last-name>Crouse</last-name>
+          </customer>
+          <options>
+            <store-in-vault type="boolean">false</store-in-vault>
+            <submit-for-settlement nil="true"/>
+            <hold-in-escrow nil="true"/>
+          </options>
+          <custom-fields nil="true"/>
+          <merchant-account-id>a</merchant-account-id>
+          <credit-card>
+            <number>4111111111111111</number>
+            <cvv>999</cvv>
+            <expiration-month>01</expiration-month>
+            <expiration-year>2018</expiration-year>
+            <cardholder-name>Ben Crouse</cardholder-name>
+          </credit-card>
+          <type>sale</type>
+        </transaction>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.78.0 (ActiveMerchant 1.72.0)
+      X-Apiversion:
+      - '4'
+      Authorization:
+      - Basic dzN2NmQ5eXRnajRqNG56ODplYjFmODliZTlmMzYzZjYxZmZmM2Y5MDI0NDQ1NmViMg==
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Date:
+      - Thu, 21 Sep 2017 20:31:08 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - nrkvc7nn7kyfbtm6
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - dfd87085-d793-49cc-99de-074b3fdf634c
+      X-Runtime:
+      - '0.124764'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAIwhxFkAA5xVTW/bMAy951cYvit2BgzIQVGBDdi5wLZzwdhMI0AfLim3zb+f5Max4zhJu5vE90g/fsny4d2a7BWJtXebfLUs8wxd5Wvtnjf53z+/xDp/UAsJjRZI5EkQcuMdo1pkmexMnI6nSxYODW5yIIJDXhyhQOAYqhA/8mG5SY/gVhsTJfT3efqA9vjYEm0xD1Tr1bpcy6I7n8MQAultG/AYlQ92602uGs8BzFPykMWJNHG2yAzPqB47cpbImeaM8KXVhPVSFj1jrLK4kHlT+Gr1JeEcCDE8QV3HLvF97b87fnbk/4f8o4FPfSsmjZNVDKaDqIDq280cel/M+Miq5eAt0ueDnDnIYjKCY+WyAQLLN2YVrG9dUN+XZRmr+nHpMU81ktB15rTZ5IFaHMmYkT3PTPlY0OYK1uy9wyvYThMH4cCi+oFOFqP7QDLQ236SbzkO9mC5UrOUW5PKwKM4kUAotBOv0JqgdmBSrIl1RG+3NrZyFx8OxhAMWnThSh57b+oUA7ki/zZbzmIi6FhfsdNoap51ielUe3BBQFWlvsVOqTfcxiGt0oxfgncm973RBEmEsN6FvSrjil4YZ/kHBFLfytX6zKGzDvz0uVSIOFJ9R7O+Y1Ps5sKktVAMJvp1x2trMMz+3Sdt8bn3Im7IzN/iHwAAAP//AwDnDtr+agYAAA==
+    http_version: 
+  recorded_at: Thu, 21 Sep 2017 20:31:08 GMT
+recorded_with: VCR 2.9.3

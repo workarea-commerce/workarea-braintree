@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/b/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <first-name>Ben</first-name>
+          <last-name>Crouse</last-name>
+          <email nil="true"/>
+          <phone nil="true"/>
+          <id nil="true"/>
+          <credit-card>
+            <cardholder-name>Ben Crouse</cardholder-name>
+            <number>4111111111111111</number>
+            <cvv>999</cvv>
+            <expiration-month>01</expiration-month>
+            <expiration-year>2018</expiration-year>
+            <token nil="true"/>
+            <options>
+            </options>
+          </credit-card>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.78.0 (ActiveMerchant 1.72.0)
+      X-Apiversion:
+      - '4'
+      Authorization:
+      - Basic dzN2NmQ5eXRnajRqNG56ODplYjFmODliZTlmMzYzZjYxZmZmM2Y5MDI0NDQ1NmViMg==
+      Content-Type:
+      - application/xml
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 21 Sep 2017 20:31:03 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - nrkvc7nn7kyfbtm6
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"e7de1b63ea4edbea13ef72c1c6ff90ff"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 808b4f10-d5b5-4351-bd09-39b0d25f6c94
+      X-Runtime:
+      - '0.441587'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAIchxFkAA6RUy27bMBC85ysM3WlJseNHIDNAC/QHmvTQS7ASVxZhilRIyrby9SVl6+EoORTxyTszu1pyh5s8nUsxO6I2XMldEM+jYIYyU4zL/S54ef5FNsETvUuy2lhVoqZ3s1nCGY2jTbxdPcSrJHSRBx2ZFSAtcfHbSaf5Umr2XjTbxbtOwjHr1TnXxhIJJdIfKJNwFHtaQBf91Ko2mIQD4vlMlRXIZia52AVW1xiELY4lcDFBq0JJnKA5nCfYCVPD7VSbaQSLjICd2abCXcBcaHmJAb2P4jWJtuQ+fr6PHhfxY7T4m4RDQptfV+z/8oeEy/fb6yc5R8FM3xLjlmSgmbkWBa2hCTx7y18Qh6Vc0mXsf0no/3e4FxFfg/7hBlz3fTxWFEow1P3QZt1oPnJ9jir92DkI+iIPUp3cnEfYIKul1Q1ROeHG1CAzHOunZJ/4vaFcalx9TW49PYYnUqEysO650JffI2WPdnqGKbfDSS7hQOZQi67xVCmBIAPqLeelLTmIa+2mRTTua+EPMCr6kelS8Fxx3fZDSiVtQSM38gn4ibpB0P76NjfyFr1RI/vYew7Cu+HK9uoCQdjCeWQ01RHWyXgJeyS1FrSwtjKPYQjGoDXzVAN3FkDcuwOeoJk7C4UVNCVK+1qiLRR7FWqvwqOz7ryS+yeUR66V9IKdAclSdXZbqq/ff9H5yW05koI8DK3doJ20XT5Lenk416DjXCtaiZHFO6AXaKyAj4bWAYNAsTprV+NI02OdzNSpyTSv/EBuX3zYa6w6oKTbzDalG+Al6rha8rcaiazLtDW2ux7uFoqm0WIZPWzWkC+yeAGL1SZN822G6/WKxatl6p7Dl6l97e/tt7bGEWWpiGGHL4zV86MM7dq4PLtPb6R98uMteAOYFgHGNDqrTQoMb5ve/QMAAP//AwA40i8nJwcAAA==
+    http_version: 
+  recorded_at: Thu, 21 Sep 2017 20:31:03 GMT
+recorded_with: VCR 2.9.3

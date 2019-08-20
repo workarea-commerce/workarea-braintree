@@ -1,0 +1,23 @@
+module Workarea
+  decorate Payment::StoreCreditCardTest, with: :braintree do
+    decorated { include BraintreeGatewayVCRConfig }
+
+    def test_save_persists_the_token
+      # braintree doesn't issue the same token for the same card
+    end
+
+    def test_perform_sets_the_token_on_the_credit_card
+      VCR.use_cassette 'braintree/store_credit_card-sets_token_on_the_card' do
+        super
+      end
+    end
+
+    private
+
+    def credit_card
+      @credit_card ||= VCR.use_cassette 'braintree/store_without_token' do
+          create_saved_credit_card(number: '4111111111111111')
+        end
+    end
+  end
+end

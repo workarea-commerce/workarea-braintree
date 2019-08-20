@@ -1,0 +1,17 @@
+.bundle/
+log/*.log
+pkg/
+spec/dummy/*
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+spec/dummy/log/*.log
+spec/dummy/tmp/
+spec/dummy/.sass-cache
+spec/dummy/public/system/dragonfly
+
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/public/system/workarea
+coverage/
+Gemfile.lock
+.DS_STORE

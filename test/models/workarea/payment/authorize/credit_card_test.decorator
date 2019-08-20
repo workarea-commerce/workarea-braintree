@@ -1,0 +1,92 @@
+module Workarea
+  decorate Payment::Authorize::CreditCardTest, with: :braintree do
+    decorated { include BraintreeGatewayVCRConfig }
+
+    def test_complete_does_nothing_if_gateway_storage_fails
+      # braintree authorizes and tokenizes in one call; nullifying this test
+    end
+
+    def test_complete_sets_the_response_on_the_transaction
+      VCR.use_cassette 'braintree/authorize_success' do
+        super
+      end
+    end
+
+    def test_complete_sets_the_transaction_attributes_on_a_failure_response
+      VCR.use_cassette 'braintree/authorize_failure' do
+        super
+      end
+    end
+
+    def test_complete_sets_transaction_attributes_on_an_error_response
+      VCR.use_cassette 'braintree/authorize_failure' do
+        super
+      end
+    end
+
+    def test_cancel_voids_with_the_authorization_from_the_transaction
+      VCR.use_cassette 'braintree/void_success' do
+        transaction.response = ActiveMerchant::Billing::Response.new(
+          true,
+          'Message',
+          {},
+          { authorization:  authorization }
+        )
+
+        operation = Payment::Authorize::CreditCard.new(tender, transaction)
+
+        original_void = operation.gateway.method(:void)
+        operation.gateway.expects(:void)
+          .with(authorization)
+          .returns(original_void.call(authorization))
+
+        operation.cancel!
+      end
+    end
+
+    def test_cancel_sets_cancellation_params_on_the_transaction
+      VCR.use_cassette 'braintree/void_success' do
+        transaction.response = ActiveMerchant::Billing::Response.new(
+          true,
+          'Message',
+          {},
+          { authorization: authorization }
+        )
+
+        operation = Payment::Authorize::CreditCard.new(tender, transaction)
+        operation.cancel!
+
+        assert_instance_of(
+          ActiveMerchant::Billing::Response,
+          transaction.cancellation
+        )
+      end
+    end
+
+    private
+
+    def tender
+      @tender ||=
+        begin
+          payment.set_address(
+            first_name: 'Ben',
+            last_name: 'Crouse',
+            street: '22 s 3rd st',
+            city: 'Philadelphia',
+            region: 'PA',
+            country: Country['US'],
+            postal_code: '19106'
+          )
+
+          payment.build_credit_card(
+            number: 4111111111111111,
+            month: 1,
+            year: Time.now.year + 1,
+            cvv: 999
+          )
+
+          payment.credit_card
+        end
+    end
+  end
+end

@@ -1,0 +1,1 @@
+Workarea::Braintree.auto_configure_gateway

@@ -1,0 +1,14 @@
+module Workarea
+  decorate Payment::Capture::CreditCard, with: :braintree do
+    def complete!
+      validate_reference!
+
+      transaction.response = handle_active_merchant_errors do
+        gateway.capture(
+          transaction.amount.cents,
+          transaction.reference.response.authorization
+        )
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+module Workarea
+  decorate Payment::StoreCreditCard, with: :braintree do
+    def perform!
+      return true if @credit_card.token.present?
+
+      response = handle_active_merchant_errors do
+        gateway.store(@credit_card.to_active_merchant)
+      end
+
+      @credit_card.token = response.params['credit_card_token']
+    end
+  end
+end

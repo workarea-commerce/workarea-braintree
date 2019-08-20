@@ -1,0 +1,25 @@
+module Workarea
+  decorate Payment::Capture::CreditCardTest, with: :braintree do
+    decorated { include BraintreeGatewayVCRConfig }
+
+    def test_complete_sets_the_response_on_the_transaction
+      VCR.use_cassette 'braintree/capture_success' do
+        super
+      end
+    end
+
+    private
+
+      def reference
+        @reference ||= Payment::Transaction.new(
+          amount: 5.to_m,
+          response: ActiveMerchant::Billing::Response.new(
+            true,
+            'Message',
+            {},
+            { authorization: authorization }
+          )
+        )
+      end
+  end
+end

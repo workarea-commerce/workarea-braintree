@@ -1,0 +1,8 @@
+# only decorate for v 3.3 and above
+if Workarea::VERSION::MAJOR >= 3 && Workarea::VERSION::MINOR >= 3
+  module Workarea
+    decorate Payment::CreditCardIntegrationTest, with: :braintree do
+      decorated { include BraintreeGatewayVCRConfig }
+    end
+  end
+end

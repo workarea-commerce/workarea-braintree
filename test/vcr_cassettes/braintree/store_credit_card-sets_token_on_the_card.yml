@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.sandbox.braintreegateway.com/merchants/b/customers
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <customer>
+          <first-name>Ben</first-name>
+          <last-name>Crouse</last-name>
+          <email nil="true"/>
+          <phone nil="true"/>
+          <id nil="true"/>
+          <device-data nil="true"/>
+          <credit-card>
+            <cardholder-name>Ben Crouse</cardholder-name>
+            <number>4111111111111111</number>
+            <cvv>999</cvv>
+            <expiration-month>01</expiration-month>
+            <expiration-year>2020</expiration-year>
+            <token nil="true"/>
+            <options>
+            </options>
+          </credit-card>
+        </customer>
+    headers:
+      Accept-Encoding:
+      - gzip
+      Accept:
+      - application/xml
+      User-Agent:
+      - Braintree Ruby Gem 2.94.0 (ActiveMerchant 1.97.0)
+      X-Apiversion:
+      - '5'
+      Content-Type:
+      - application/xml
+      Authorization:
+      - Basic dzN2NmQ5eXRnajRqNG56ODplYjFmODliZTlmMzYzZjYxZmZmM2Y5MDI0NDQ1NmViMg==
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Tue, 20 Aug 2019 20:35:28 GMT
+      Content-Type:
+      - application/xml; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Authentication:
+      - basic_auth
+      X-User:
+      - nrkvc7nn7kyfbtm6
+      Vary:
+      - Accept-Encoding
+      Content-Encoding:
+      - gzip
+      Etag:
+      - W/"42be34ed98c79bbf91f2d2547268068e"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Runtime:
+      - '0.418288'
+      X-Request-Id:
+      - 01-1566333327.800-73.188.172.250-2169283
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Broxyid:
+      - 01-1566333327.800-73.188.172.250-2169283
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAJBZXF0AA6RUTW/bMAy991cEvqu2k7RNCscFNqDdBnTAsLZrexloi461yJInyUmcXz/JiT/SdIdhOYXvPdKU9MjoZlvw0RqVZlIsvPA88EYoUkmZWC68x4dbMvNu4rMorbSRBar4bDSKGI0n04twPA7nYeTbyIGWTHMQhtj490Yl2VQousvr+WSnIn/IOnXGlDZEQIHxBxSRP4gdzaGNPipZaYz8HnF8KosSRD0SjC88oyr0/AbHAhg/QctcCjxBM9ieYBtMNDOn2lQhGKQEzMjUJS48akPDCvTicRDOSTAj4+BhHFxPLq7Hs9fI7xOa/Kqk/5bfJ+y/31w/yRhyqvctLblMgLv7fJk87ejd3Lw+f8nud9/C+4fP9f3Dahv5veZwCMoMSUFRfWgDlILac+wxv0csljART0P3i3z3v8WdiLga8RPTYM/bxUNFLjlF1T3zqH3Mt1yXIwtnFAY8fhQrITfWGQOsl1XCqJrIjDCtKxApDvWnZJf4f8+4r3GYBHI8BUP4RMplCsYOWPz4faDs0FZPMWGmP8k+7MkMKt42nkjJEYQXO5M6aUP24krZ1yIKlxV3BxgUfcu0KbgtmWr6IYUUJo8De6oT8B11jaDs9Y2DI3mDHqmRvu09A+7ccGA7de/a9O72IvnxVNG7kNO7fP16O//1Es4lfPq6SZ7lG4M3yTkCN7k12MASA6yVsQKWSCrF49yYUl/7PmiNRp8nCpj1D+LS3s4G6nPrP7+EukBhfhZockl/crmU/tr6/rwUyxsUa6akcIKFBkETaSevr9990ZrRLlWSgFj1rR2hrbTZddN4P3WHoOVsK0rywXy0QCdQWAIbvHgL9AJJq7TZxANNh7UyXSU6Vax0r3m8LvxOY+QKRZznuix2kb+PWq4S7HeFRFRF0kyFvR5m95eKg8k0uJhdQTZJwwlMLmdJks1TvLq6pOHlNLm0y+9vqV3t/1unTY01ikISTVd/cWXHDzKUbWM/s+/eSLMvhiv0CNANApQqtFY7KdAvhvjsDwAAAP//AwDJ6v6llgcAAA==
+    http_version: 
+  recorded_at: Tue, 20 Aug 2019 20:35:28 GMT
+recorded_with: VCR 2.9.3
