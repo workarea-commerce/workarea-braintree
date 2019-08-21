@@ -5,11 +5,11 @@ require "workarea/braintree/version"
 Gem::Specification.new do |s|
   s.name        = "workarea-braintree"
   s.version     = Workarea::Braintree::VERSION
-  s.authors     = ["Bryan Alexander"]
-  s.email       = ["balexander@weblinc.com"]
+  s.authors     = ["Eric Pigeon"]
+  s.email       = ["epigeon@workarea.com"]
   s.homepage    = "https://github.com/workarea-commerce/workarea-braintree"
-  s.summary     = "ActiveMerchant Gateway and supporting classes for BrainTree"
-  s.description = "Adds ability to handle credit card storage and processing"
+  s.summary     = "Braintree integration for Workarea Commerce Platform"
+  s.description = "Adds ability to handle credit card storage and processing with Braintree"
   s.files       = `git ls-files`.split("\n")
   s.license = 'Business Software License'
 
