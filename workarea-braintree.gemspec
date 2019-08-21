@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.summary     = "ActiveMerchant Gateway and supporting classes for BrainTree"
   s.description = "Adds ability to handle credit card storage and processing"
   s.files       = `git ls-files`.split("\n")
+  s.license = 'Business Software License'
 
   s.required_ruby_version = ">= 2.0.0"
 
