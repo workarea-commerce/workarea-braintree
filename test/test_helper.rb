@@ -1,10 +1,3 @@
-require 'simplecov'
-
-SimpleCov.start "rails" do
-  add_filter "version.rb"
-  add_filter "lib/active_merchant/billing/bogus_braintree_gateway.rb"
-end
-
 ENV['RAILS_ENV'] = 'test'
 
 require File.expand_path("../../test/dummy/config/environment.rb", __FILE__)
