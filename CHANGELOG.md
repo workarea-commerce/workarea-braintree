@@ -1,3 +1,18 @@
+Workarea Braintree 1.1.1 (2020-02-27)
+--------------------------------------------------------------------------------
+
+*   Add PayPal BN Code to Braintree Gateways
+
+    The BN code for PayPal revenue attribution has now been added to all
+    Braintree gateway requests using the global `.application_id` parameter.
+    This maps the `:channel` in Braintree's API to the BN code set on the
+    class level.
+
+    BRAINTREE-2
+    Tom Scott
+
+
+
 Workarea Braintree 1.1.0 (2019-11-26)
 --------------------------------------------------------------------------------
 
